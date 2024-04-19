@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIANA SHOES</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-links img {
+            margin-left: 10px;
+        }
+        .header-links img:hover {
+            opacity: 0.7;
+        }
+
+        /* Search bar styles */
+        .search-bar {
+            width: 300px;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 20px auto;
+        }
+        .search-bar input[type="text"],
+        .search-bar button {
+            vertical-align: middle;
+        }
+        .search-bar input[type="text"] {
+            width: 70%;
+            padding: 8px;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .search-bar button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #45a049;
+        }
+
+        /* Banner styles */
+        .banner {
+            background: linear-gradient(to right, #6F42C1, #9B6ABC);
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        .banner h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .banner img {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        .banner p:last-child {
+            font-size: 24px;
+            margin-bottom: 0;
+        }
+
+        /* Sale section styles */
+        .sale-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .sale-banner {
+            background-color: #F8D7DA;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .sale-banner:hover {
+            background-color: #ec7b82;
+        }
+
+        /* Main content styles */
+        .main-content {
+            text-align: center;
+            margin-top: 20px;
+            padding-bottom: 150px; /* Add space for footer */
+        }
+        .product-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .product-card {
+            width: 200px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-image img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .product-card h3 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .product-card .price {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #6F42C1;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            z-index: 999;
+        }
+        .footer-links {
+            display: flex;
+            align-items: center;
+        }
+        .footer-links a {
+            margin: 0 10px;
+            font-size: 16px;
+        }
+        .footer-links a:hover {
+            color: #ec7b82;
+        }
+        .footer-payment {
+            display: flex;
+            align-items: center;
+        }
+        .payment-methods img {
+            width: 40px;
+            margin: 0 5px;
+        }
+        .social-media img {
+            width: 30px;
+            margin: 0 5px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">DIANA SHOES</div>
+        <div class="header-icons">
+            <!-- Add icons for user account access, wishlist, and shopping cart -->
+            <img src="user-icon.png" alt="User">
+            <img src="wishlist-icon.png" alt="Wishlist">
+            <img src="cart-icon.png" alt="Cart">
+        </div>
+        <div class="header-links">
+            <img src="hamburger-menu-icon.png" alt="Menu">
+            <img src="login-icon.png" alt="Login" onclick="showLoginModal()">
+        </div>
+    </header>
+
+    <!-- Login/Signup Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideLoginModal()">&times;</span>
+            <div id="loginForm">
+                <h2>Login</h2>
+                <form onsubmit="return false;">
+                    <input type="email" placeholder="Email" required><br><br>
+                    <input type="password" placeholder="Password" required><br><br>
+                    <button onclick="login()">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a></p>
+            </div>
+            <div id="signupForm" style="display: none;">
+                <h2>Sign Up</h2>
+                <form onsubmit="return false;" id="signupFormElement">
+                    <input type="text" placeholder="Full Name" id="fullNameInput" required><br>
+                    <input type="email" placeholder="Email" id="emailInput" required><br>
+                    <input type="password" placeholder="Password" id="passwordInput" required><br>
+                    <button onclick="signup()">Sign Up</button>
+                </form>
+                <p>Already have an account? <a href="#" onclick="toggleForm()">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <!-- Search bar content -->
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+
+    <!-- Main Banner Section -->
+    <section class="banner">
+        <h1>Flash Sale 09.09</h1>
+        <p>Up to 50% Off</p>
+        <img src="https://raw.githubusercontent.com/ewewe333/child-s-shoes/main/images.jpeg" alt="Flash Sale Image">
+        <p>Shop Now</p>
+    </section>
+
+    <!-- Sale Section -->
+    <section class="sale-section">
+        <div class="sale-banner">10% OFF</div>
+        <div class="sale-banner">20% OFF</div>
+        <div class="sale-banner">40% OFF</div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section class="main-content">
+        <h2>Explore</h2>
+        <div class="product-section">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://raw.githubusercontent.com/ewewe333/mens-shoes.jpg/0f30da504cdd6cd6d8fbaf79e5a22d6c823798fe/1%20(1).jpg" alt="Men's Shoes">
+                </div>
+                <h3>Men's Shoes</h3>
+                <div class="price">$59.99</div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://raw.githubusercontent.com/ewewe333/women-shoes.jpg/main/DSC_4090b.jpg" alt="Women's Shoes">
+                </div>
+                <h3>Women's Shoes</h3>
+                <div class="price">$49.99</div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://raw.githubusercontent.com/ewewe333/child-s-shoes/main/1%20(2).jpg" alt="Kids' Shoes">
+                </div>
+                <h3>Kids' Shoes</h3>
+                <div class="price">$39.99</div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://raw.githubusercontent.com/ewewe333/snaker-shoes.jpg/ead3c2fd41476b0d55e05653c1b317ee73200640/1%20(3).jpg" alt="Sandals">
+                </div>
+                <h3>Sandals</h3>
+                <div class="price">$29.99</div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://raw.githubusercontent.com/ewewe333/snaker-shoes.jpg/ead3c2fd41476b0d55e05653c1b317ee73200640/1%20(4).jpg" alt="Sneaker Cleaners">
+                </div>
+                <h3>Sneaker Cleaners</h3>
+                <div class="price">$9.99</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Returns</a>
+            <a href="#">Shipping</a>
+            <a href="#">FAQs</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Company Info</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog</a>
+        </div>
+        <div class="footer-payment">
+            <div class="payment-methods">
+                <img src="https://raw.githubusercontent.com/ewewe333/icons.jpg/main/download%20(1).jpeg" alt="Visa">
+                <img src="https://raw.githubusercontent.com/ewewe333/icons.jpg/main/download%20(2).jpeg" alt="MasterCard">
+                <img src="https://github.com/ewewe333/icons.jpg/blob/main/download.jpeg" alt="PayPal">
+            </div>
+            <div class="social-media">
+                <img src="https://raw.githubusercontent.com/ewewe333/icons.jpg/main/download.png" alt="Facebook">
+                <img src="https://raw.githubusercontent.com/ewewe333/icons.jpg/main/download%20(3).jpeg" alt="Instagram">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Google Sign-In Script -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        function signup() {
+            const fullName = document.getElementById('fullNameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+
+            const userData = {
+                fullName: fullName,
+                email: email,
+                password: password
+            };
+
+            fetch('https://server-js-lake.vercel.app/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('User signed up successfully!');
+                    // Optionally reset the form or perform other actions
+                } else {
+                    throw new Error('Signup request failed.');
+                }
+            })
+            .catch(error => {
+                console.error('Error signing up:', error);
+                alert('Failed to sign up. Please try again.');
+            });
+        }
+
+        function toggleForm() {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            loginForm.style.display = 'none';
+            signupForm.style.display = 'block';
+        }
+
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function hideLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
